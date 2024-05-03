@@ -4,6 +4,33 @@
 #include "figures/rectangle/rectangle.h"
 #include "figures/elips/elips.h"
 #include "figures/circle/circle.h"
+//#include "vector/vector.h"
+#include "fstream"
+#include "figures/polygon/polygon.h"
+
+Vector<std::pair<double, double>> readVerticesFromFile(const std::string& filename) {
+    std::ifstream file(filename);
+    if (!file.is_open()) {
+        std::cerr << "Failed to open file: " << filename << std::endl;
+        exit(1);
+    }
+
+    size_t numVertices;
+    file >> numVertices;
+
+    Vector<std::pair<double, double>> vertices(numVertices);
+
+    for (size_t i = 0; i < numVertices; ++i) {
+        double x, y;
+        file >> x >> y;
+        vertices.push_back(std::make_pair(x, y));
+    }
+
+    file.close();
+
+    return vertices;
+}
+
 int main()
 {
     Triangle t(6,5,2.2);
@@ -46,6 +73,15 @@ int main()
     std::cout << "Perimetr: " << c.calc_perimetr() << '\n';
     std::cout << "Area: " << c.calc_area() << '\n';
 
+    std::cout << "\n";
+
+    std::string filename = "/Users/nikitastepanov/CLionProjects/figuries/polygon.txt"; // Имя файла с вершинами полигона
+    Vector<std::pair<double, double>> vertices = readVerticesFromFile(filename);
+
+    Polygon polygon(vertices);
+    polygon.name();
+    std::cout << "Perimeter of polygon: " << polygon.calc_perimetr() << std::endl;
+    std::cout << "Area of polygon: " << polygon.calc_area() << std::endl;
 
 
 }

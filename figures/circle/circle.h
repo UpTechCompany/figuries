@@ -7,6 +7,7 @@
 
 class Circle :public Geometric_Figure {
 public:
+    Circle();
     Circle(double x, double y, double r);
 	double calc_area() override;
 	double calc_perimetr() override;
@@ -16,9 +17,5 @@ private:
 	double radius;
 };
 
-Circle::Circle(double x, double y, double r):
-    x(x),
-    y(y),
-    radius(r){}
 
 #endif //FIGURIES_CIRCLE_H

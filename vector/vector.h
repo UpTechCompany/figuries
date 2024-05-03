@@ -2,17 +2,17 @@
 // Created by Никита Степанов on 15.03.2024.
 //
 
-#ifndef RATIONAL_VECTOR_H
-#define RATIONAL_VECTOR_H
+#ifndef FIGURES_VECTOR_H
+#define FIGURES_VECTOR_H
 #include <iostream>
 #include <algorithm>
 
 template<typename T>
 class Vector {
 private:
-    T* array; // Указатель на первый элемент массива
-    size_t capacity; // Размер выделенной памяти
-    size_t size; // Текущий размер вектора
+    T* array;
+    size_t capacity;
+    size_t size;
 
 
 public:
@@ -140,4 +140,4 @@ public:
 
 };
 
-#endif //RATIONAL_VECTOR_H
+#endif //FIGURES_VECTOR_H
